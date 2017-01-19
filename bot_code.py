@@ -7,6 +7,9 @@ token = "MjUxMTY1NDE5MjQxNjAzMDgz.Cxppdw.2stvBMJvXv8cF0FlspngRmZ62cY"
 client = discord.Client()
 client.login(token)
 
+#censored words
+censored = ["mei"]
+
 #echo command, used only for testing purposes
 async def echo(author, message):
     await client.send_message(message.channel, message.content[6:len(message.content)])
@@ -48,8 +51,6 @@ async def play(author, message):
     url = message.content[6:len(message.content)]
     if(not (author_voice == None)):
         await client.send_message(message.channel, "Now playing {urlw}.".format(urlw = url))
-        #if(not (client.user.voice.voice_channel == None)):
-            #voice = channel.server.voice_client
         voice = await client.join_voice_channel(author_voice)
         player = await voice.create_ytdl_player(url)
         player.start()
@@ -102,7 +103,11 @@ async def on_message(message):
             await git(author, message)
         else:
             await client.send_message(message.channel, "Command \"" + message.content + "\" not recognized.")
-        
+    message_array = message.content.lower().split(" ")
+    for i in message_array:
+        for j in censored:
+            if i == j:
+                await client.delete_message(message)
 print("Online!")
 
 #run the client
