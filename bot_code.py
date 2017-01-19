@@ -60,9 +60,11 @@ async def play(author, message):
 async def leave(author, message):
     await client.voice_client_in(message.server).disconnect()
 
+#invite command, gives a link to invite this bot to your server
 async def invite(author, message):
     await client.send_message(message.channel, "Click this link to invite the bot to your server: https://discordapp.com/oauth2/authorize?client_id=251165419241603083&scope=bot&permissions=0")
 
+#git command, links the GitHub
 async def git(author, message):
     await client.send_message(message.channel, "Github: https://github.com/bCubed3/cubedBot")
 
@@ -75,7 +77,7 @@ async def on_voice_state_update(before, after):
     if len(voice.channel.voice_members) == 1:
         await voice.disconnect()
 
-#when the bot recieves a message
+#tfw when ur a bot and you get a dm
 @client.event
 async def on_message(message):
     author = message.author
