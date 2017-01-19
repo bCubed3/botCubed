@@ -9,8 +9,12 @@ client.login(token)
 
 #changing words
 change = {
-    "sombra" : "¿Quién es Sombra?"
+    "sombra" : "¿Quién es Sombra?",
+    "hey" : "Hey, {person}!",
+    "hi" : "Hi, {person!",
+    "jack" : "Jack is an edgy weeb."
 }
+
 #echo command, used only for testing purposes
 async def echo(author, message):
     await client.send_message(message.channel, message.content[6:len(message.content)])
@@ -108,7 +112,7 @@ async def on_message(message):
     for i in message_array:
         for j in change:
             if i == j:
-                await client.send_message(message.channel, change[j])
+                await client.send_message(message.channel, change[j].format(person = message.author.name))
 print("Online!")
 
 #run the client
