@@ -12,8 +12,11 @@ change = {
     "sombra" : "¿Quién es Sombra?",
     "hey" : "Hey, {person}!",
     "hi" : "Hi, {person}!",
-    "jack" : "Jack is an edgy weeb."
+    "murica!" : "FUCK YEAH!"
 }
+
+help_game = discord.Game()
+help_game.name = "Type =help"
 
 #echo command, used only for testing purposes
 async def echo(author, message):
@@ -113,10 +116,14 @@ async def on_message(message):
         for j in change:
             if i == j:
                 await client.send_message(message.channel, change[j].format(person = message.author.name))
+
+@client.event
+async def on_ready():
+    await client.change_presence(game=help_game)
+
 print("Online!")
 
 #run the client
 client.run(token)
-
 
 print("Ready!")
