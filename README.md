@@ -16,3 +16,5 @@ Commands list:
 =help: Post the documentation.
 
 =invite: Post a link to invite the bot to a server.
+
+=git: post a link to the GitHub.

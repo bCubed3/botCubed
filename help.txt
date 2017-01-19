@@ -11,3 +11,5 @@
 =help: Post the documentation.
 
 =invite: Post a link to invite the bot to a server.
+
+=git: Post a link to the GitHub.
