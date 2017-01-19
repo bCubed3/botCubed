@@ -60,6 +60,9 @@ async def play(author, message):
 async def leave(author, message):
     await client.voice_client_in(message.server).disconnect()
 
+async def invite(author, message):
+    await client.send_message(message.channel, "Click this link to invite the bot to your server: https://discordapp.com/oauth2/authorize?client_id=251165419241603083&scope=bot&permissions=0")
+
 #automatically disconnects the bot from voice after there is no one left in the voice channel
 @client.event
 async def on_voice_state_update(before, after):
@@ -88,6 +91,8 @@ async def on_message(message):
             await play(author, message)
         elif(message.content.startswith("=leave")):
             await leave(author, message)
+        elif(message.content.startswith("=invite")):
+            await invite(author, message)
         else:
             await client.send_message(message.channel, "Command \"" + message.content + "\" not recognized.")
         

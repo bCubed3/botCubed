@@ -9,3 +9,5 @@
 =leave : Makes the bot leave the voice channel.
 
 =help: Post the documentation.
+
+=invite: Post a link to invite the bot to a server.
