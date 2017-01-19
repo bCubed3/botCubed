@@ -11,7 +11,7 @@ client.login(token)
 change = {
     "sombra" : "¿Quién es Sombra?",
     "hey" : "Hey, {person}!",
-    "hi" : "Hi, {person!",
+    "hi" : "Hi, {person!}",
     "jack" : "Jack is an edgy weeb."
 }
 
