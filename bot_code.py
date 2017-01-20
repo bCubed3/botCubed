@@ -3,7 +3,8 @@ import random
 
 print("Loading...")
 
-token = "MjUxMTY1NDE5MjQxNjAzMDgz.Cxppdw.2stvBMJvXv8cF0FlspngRmZ62cY"
+with open("pass.txt") as pw:
+        token = pw.read()
 client = discord.Client()
 client.login(token)
 
