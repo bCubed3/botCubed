@@ -1,8 +1,6 @@
 import discord
 import random
 
-print("Loading...")
-
 with open("pass.txt") as pw:
         token = pw.read()
 client = discord.Client()
@@ -14,6 +12,8 @@ change = {
     "hey" : "Hey, {person}!",
     "hi" : "Hi, {person}!",
     "murica!" : "FUCK YEAH!"
+    "90kg" : "300m"
+    "#1" : "We are number one!"
 }
 
 help_game = discord.Game()
@@ -123,9 +123,5 @@ async def on_ready():
     print("Logged in as {user}".format(user=client.user))
     await client.change_presence(game=help_game)
 
-print("Online!")
-
 #run the client
 client.run(token)
-
-print("Ready!")
