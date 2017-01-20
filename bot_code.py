@@ -119,6 +119,7 @@ async def on_message(message):
 
 @client.event
 async def on_ready():
+    print("Logged in as {user}".format(user=client.user))
     await client.change_presence(game=help_game)
 
 print("Online!")
