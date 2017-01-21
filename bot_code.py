@@ -78,13 +78,30 @@ async def invite(author, message):
 async def git(author, message):
     await client.send_message(message.channel, "Github: https://github.com/bCubed3/cubedBot")
 
+#poll command, creates a poll with reactions
+async def poll(author, message, open_poll):
+    if(not open_poll == None):
+        await client.send_message(message.channel, "There is currently a poll open. Closing it now.")
+        await close(author, message, open_poll)
+    options = message.content.split("; ")[1:len(message.content.split("; ") - 1)]
+    await client.send_message(message.channel, options)
+    return message
+        
+#close command, closes the current poll.
+async def close(author, message, open_poll):
+    if(open_poll == None):
+        await client.send_message(message.channel, "There is no poll to close.")
+    else:
+        reaction_nums = []
+        reaction_nums.append(len(open_poll.get_reaction_users))
+
 #automatically disconnects the bot from voice after there is no one left in the voice channel
 @client.event
 async def on_voice_state_update(before, after):
     voice = after.server.voice_client
-    if voice is None or not voice.is_connected():
+    if(voice is None or not voice.is_connected()):
         return
-    if len(voice.channel.voice_members) == 1:
+    if(len(voice.channel.voice_members) == 1):
         await voice.disconnect()
 
 #tfw when ur a bot and you get a dm
@@ -110,6 +127,10 @@ async def on_message(message):
             await invite(author, message)
         elif(message.content.startswith("=git")):
             await git(author, message)
+        elif(message.content.startswith("=poll")):
+            open_poll = await poll(author, message, open_poll)
+        elif(message.content.startswith("=close")):
+            await close(author, message, open_poll)
         else:
             await client.send_message(message.channel, "Command \"" + message.content + "\" not recognized.")
     message_array = message.content.lower().split(" ")
@@ -125,3 +146,5 @@ async def on_ready():
 
 #run the client
 client.run(token)
+react1 = discord.Emoji()
+react1 = discord.Reaction()
