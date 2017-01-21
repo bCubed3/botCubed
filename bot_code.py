@@ -11,8 +11,8 @@ change = {
     "sombra" : "¿Quién es Sombra?",
     "hey" : "Hey, {person}!",
     "hi" : "Hi, {person}!",
-    "murica!" : "FUCK YEAH!"
-    "90kg" : "300m"
+    "murica!" : "FUCK YEAH!",
+    "90kg" : "300m",
     "#1" : "We are number one!"
 }
 
