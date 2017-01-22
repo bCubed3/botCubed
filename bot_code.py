@@ -1,6 +1,7 @@
 import discord
 import random
 
+open_poll = True
 with open("pass.txt") as pw:
         token = pw.read()
 client = discord.Client()
@@ -89,11 +90,13 @@ async def poll(author, message, open_poll):
         
 #close command, closes the current poll.
 async def close(author, message, open_poll):
+    react1 = discord.Emoji()
+    react1 = discord.Reaction()
     if(open_poll == None):
         await client.send_message(message.channel, "There is no poll to close.")
     else:
         reaction_nums = []
-        reaction_nums.append(len(open_poll.get_reaction_users))
+        reaction_nums.append(len(open_poll.get_reaction_users(react1)))
 
 #automatically disconnects the bot from voice after there is no one left in the voice channel
 @client.event
